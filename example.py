@@ -232,3 +232,40 @@
 # from pizza import make_pizza as mp   - псевдоним для функции модуля
 # import pizza as p  - псевдоним для самого модуля
 # from pizza import * - импорт всех функций модуля
+
+
+
+
+                                    # API 
+# Пакет requests предоставляет удобные средства для запроса информации с сайтов
+# из программ Python и анализа полученных ответов. Чтобы установить requests ,
+# введите команду следующего вида:
+# $ pip install --user requests
+
+# https://bootstrap.pypa.io/get-pip.py  - установка самого пайпа, созранение его на комп и инсталяция этого файла через команду sudo python get-pip.py
+
+# pip list
+
+
+import requests
+import tkinter as tk
+
+
+def getMockData():
+    # url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
+    url = 'http://alexnoch-blog.ru'
+    r = requests.get(url)
+    print("Status code:", r.status_code)
+    
+    # response_dict = r.json()
+    # response_dict.split(',')
+    label = tk.Label(window,text=r.text, wraplength=500)
+    label.pack()
+
+window = tk.Tk()
+window.geometry(f"400x500+100+200");
+
+btn1 = tk.Button(window,text='Get Data', command=getMockData)
+btn1.pack()
+
+window.mainloop()
