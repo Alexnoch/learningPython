@@ -233,6 +233,25 @@
 # import pizza as p  - псевдоним для самого модуля
 # from pizza import * - импорт всех функций модуля
 
+# from car import Car  - импорт класса Команда import в точке  приказывает Python открыть модуль car и импорти-
+# ровать класс Car .
+# from car import Car, ElectricCar - импорт нескольких классов из модуля
+
+# Также возможно импортировать весь модуль, а потом обращаться к нужным клас-
+# сам с использованием точечной записи.  
+# my_cars.py
+# import car
+#  my_beetle = car.Car('volkswagen', 'beetle', 2016)
+# from имя_модуля import *
+
+
+# Импортирование модуля в модуль
+# electric_car.py
+# """Набор классов для представления электромобилей."""
+#  from car import Car
+# class Battery():
+# ...
+# class ElectricCar(Car):
 
 
 
@@ -247,25 +266,117 @@
 # pip list
 
 
-import requests
-import tkinter as tk
+# import requests
+# import tkinter as tk
 
 
-def getMockData():
-    # url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
-    url = 'http://alexnoch-blog.ru'
-    r = requests.get(url)
-    print("Status code:", r.status_code)
+# def getMockData():
+#     # url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
+#     url = 'http://alexnoch-blog.ru'
+#     r = requests.get(url)
+#     print("Status code:", r.status_code)
     
-    # response_dict = r.json()
-    # response_dict.split(',')
-    label = tk.Label(window,text=r.text, wraplength=500)
-    label.pack()
+#     # response_dict = r.json()
+#     # response_dict.split(',')
+#     label = tk.Label(window,text=r.text, wraplength=500)
+#     label.pack()
 
-window = tk.Tk()
-window.geometry(f"400x500+100+200");
+# window = tk.Tk()
+# window.geometry(f"400x500+100+200");
 
-btn1 = tk.Button(window,text='Get Data', command=getMockData)
-btn1.pack()
+# btn1 = tk.Button(window,text='Get Data', command=getMockData)
+# btn1.pack()
 
-window.mainloop()
+# window.mainloop()
+
+                    # CLASSES
+
+# class Car():
+#     def __init__(self, make, model, year):
+# """Инициализирует атрибуты описания автомобиля."""
+# self.make = make
+# self.model = model
+# self.year = year
+# 
+#   self.odometer_reading = 0    // Параметр по умолчанию
+# def get_descriptive_name(self):
+# ...
+# 
+# def read_odometer(self):
+# """Выводит пробег машины в милях."""
+# print("This car has " + str(self.odometer_reading) + " miles on it.")     
+# 
+# 
+# my_new_car.odometer_reading = 23  - изменить параметр по умолчанию
+# 
+# 
+# class Car():
+
+#  - Обновление параметра по умолчанию класс через метод класса
+# def update_odometer(self, mileage):
+# """Устанавливает заданное значение на одометре."""
+# self.odometer_reading = mileage
+# my_new_car = Car('audi', 'a4', 2016)
+# print(my_new_car.get_descriptive_name())
+#  my_new_car.update_odometer(23)
+# my_new_car.read_odometer()  
+# 
+# 
+# 
+# 
+# def increment_odometer(self, miles):
+# """Увеличивает показания одометра с заданным приращением."""
+# self.odometer_reading += miles        
+# 
+# 
+# 
+        #Наследование класса
+        # 
+# class ElectricCar(Car):
+#     """Представляет аспекты машины, специфические для электромобилей."""
+#     def __init__(self, make, model, year):
+#         """Инициализирует атрибуты класса-родителя."""
+#         super().__init__(make, model, year)
+
+
+# my_tesla = ElectricCar('tesla', 'model s', 2016)  
+# 
+# 
+# 
+#  Наследуемся от машины, но вызываем в классе машини, класс батарейка и используем методы батарейки в классе машини
+# class Battery():
+# """Простая модель аккумулятора электромобиля."""
+
+# def __init__(self, battery_size=70):
+# """Инициализирует атрибуты аккумулятора."""
+# self.battery_size = battery_size
+# def describe_battery(self):
+# """Выводит информацию о мощности аккумулятора."""
+# print("This car has a " + str(self.battery_size) + "-kWh battery.")
+# class ElectricCar(Car):
+# """Представляет аспекты машины, специфические для электромобилей."""
+# def __init__(self, make, model, year):
+# """
+# Инициализирует атрибуты класса-родителя.
+# Затем инициализирует атрибуты, специфические для электромобиля.
+# """
+# super().__init__(make, model, year)
+# 
+# self.battery = Battery()
+# my_tesla = ElectricCar('tesla', 'model s', 2016)
+# print(my_tesla.get_descriptive_name())
+# my_tesla.battery.describe_battery()  
+                      
+class Auto():
+    def __init__(self,color,speed):
+        """auto claaa"""
+        self.color = color
+        self.speed = speed
+    
+    def gas(self):
+        print(self.color + ' auto run ' + str(self.speed) + ' hour')
+
+
+mycar = Auto('Red', 200)
+run = mycar.gas()
+
